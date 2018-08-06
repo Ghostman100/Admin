@@ -1,0 +1,35 @@
+<h1>Listing rooms</h1>
+
+<table>
+  <tr>
+    <th>Stake</th>
+    <th>Number of players</th>
+    <th>Number of Winners</th>
+    <th>Date</th>
+    <th>Status</th>
+    <th>First winner</th>
+    <th>Second winner</th>
+    <th>Third winner</th>
+    <th></th>
+  </tr>
+
+  <% @rooms.each do |room| %>
+    <tr>
+      <td><%= room.stake %></td>
+      <td><%= room.num_of_players %></td>
+      <td><%= room.num_of_winners %></td>
+      <td><%= room.updated_at %></td>
+      <td><%= room.status %></td>
+      <%    winners = [] %>
+      <%    w = room.winners %>
+      <% w.each do |x|%>
+        <%  winner = User.find_by(user_id: x)%>
+        <%  winners.push("#{winner.first_name} #{winner.last_name} #{winner.username}") %>
+        <% end %>
+      <td><%= winners[0] %></td>
+      <td><%= winners[1] %></td>
+      <td><%= winners[2] %></td>
+      <td><%= link_to 'Show', room_path(room) %></td>
+    </tr>
+  <% end %>
+</table>

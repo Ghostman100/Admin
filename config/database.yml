@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: telegram_data
+  pool: 5
+  timeout: 5000
+  username: pguser
+  password: 123
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: telegram_data_test
+  pool: 5
+  timeout: 5000
+  username: pguser
+  password: 123
