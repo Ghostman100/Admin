@@ -21,11 +21,13 @@
       <td><%= room.updated_at %></td>
       <td><%= room.status %></td>
       <%    winners = [] %>
+<% if room.winners %>
       <%    w = room.winners %>
       <% w.each do |x|%>
         <%  winner = User.find_by(user_id: x)%>
         <%  winners.push("#{winner.first_name} #{winner.last_name} #{winner.username}") %>
         <% end %>
+<% end %>
       <td><%= winners[0] %></td>
       <td><%= winners[1] %></td>
       <td><%= winners[2] %></td>

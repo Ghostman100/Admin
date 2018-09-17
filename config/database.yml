@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: telegram_data
+  database: telegram_data_new
   pool: 5
   timeout: 5000
   username: pguser
@@ -10,7 +10,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: telegram_data_test
+  database: telegram_data_test_new
   pool: 5
   timeout: 5000
   username: pguser

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_06_085654) do
+ActiveRecord::Schema.define(version: 2018_08_07_065329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,11 +48,20 @@ ActiveRecord::Schema.define(version: 2018_08_06_085654) do
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
+  create_table "rooms_users", id: :serial, force: :cascade do |t|
+    t.integer "room_id"
+    t.integer "user_id"
+    t.index ["room_id"], name: "index_rooms_users_on_room_id"
+    t.index ["user_id"], name: "index_rooms_users_on_user_id"
+  end
+
   create_table "user_choices", id: :serial, force: :cascade do |t|
     t.integer "stake"
     t.integer "num_of_players"
     t.integer "num_of_winners"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_choices_on_user_id"
   end
 
@@ -62,8 +71,8 @@ ActiveRecord::Schema.define(version: 2018_08_06_085654) do
     t.string "last_name"
     t.string "username"
     t.boolean "in_game"
-    t.integer "room_id"
     t.integer "user_choice_id"
+    t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_users_on_room_id"

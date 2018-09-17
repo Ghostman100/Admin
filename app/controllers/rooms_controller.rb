@@ -4,6 +4,8 @@ class RoomsController < ApplicationController
   end
   def show
     @room = Room.find(params[:id])
+    @users = @room.users
+if @room.winners
     w = @room.winners
     @winners = ""
     w.each do |x|
@@ -11,4 +13,5 @@ class RoomsController < ApplicationController
       @winners += "#{winer.first_name} #{winer.last_name} #{winer.username}, "
     end
   end
+end
 end
